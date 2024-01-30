@@ -1,0 +1,1141 @@
+TINY MES
+	Request/Request Information Management System
+		Requests
+			Complete 
+			Reject
+			Forward
+		Documents (are gurenteed unique)
+			Document control number is reccomended
+					Automatic number checking for gaps ( can be turned off)
+				Force required
+			Check in
+			Check out
+				Allow multiple checkouts (disabled by default)
+			Update
+				Force request update (enabled by default)
+				Revert to previous version
+				Delete previous version
+			Archive
+				Disable auto archive (disabled by default)
+			Unarchive
+				Force request unarchive
+		Boards
+			Topic
+				Board
+					Post
+		Secrets
+		Allow outside uploads (with a code)
+		Load in csv
+	Little Books
+	Big Sales
+	Big Commerce Connector
+	Ship Rush Connector
+	Avatax Connector
+	Stripe or Beema Connector
+
+REQUEST REQUEST
+	Build Database
+	Build DAL
+
+TinyMES.DAL
+SQL Files -> DAL String -> DAL/Models -> Component
+
+DOCUMENT RULES
+Documents are unique. 
+Documents can only be used by one person at a time.
+Documents can only be used for a type of request once.
+
+
+There is only one invoice. It can only be shipped once. 
+
+ASSETS
+	DOCUMENTS (Documents I have/Requests completed for me)
+		Documents I have had
+		Documents I gave away
+	REQUESTS
+		Requests completed for me
+		Requests completed for others
+LIABILITIES (Documents I owe/Requests I need to complete)
+	DOCUMENTS
+		Documents requested from me
+		Document requests fullfilled 
+	REQUESTS
+		Requests requested from me
+		Requests requested from others
+INCOME (Documents coming in/Requests being fulfilled)
+	DOCUMENTS
+		Documents I create
+		Documents given to me
+	REQUESTS
+		Requests done for me
+EXPENSE
+	DOCUMENTS
+		Documents I destroy
+		Documents I give away
+	REQUESTS
+		Requests I complete
+EQUITY
+	DOCUMENTS
+		Documents I have (documents deleted)
+	REQUESTS
+		Requests fulfilled for me (negative is requests not fulfilled)
+
+----------------------
+MONEY INFORMATION DOCUMENTS OBJECTS TASKS 
+ASSETS LIABILITIES INCOME EXPENSES EQUITY 
+CASH ACCRUAL
+LIQUID ILLIQUID
+
+INFORMATION, DOCUMENTS, OBJECTS, AND TASKS* 
+	have associated monitary value
+	can be linked to other information, documents, objects
+	tasks have estimated labor values
+	information, documents, and objects have estimated availabilities
+By using wages*labor = money
+
+ASSETS
+	CASH
+	A/R
+	INFORMATION
+	INFORMATION REQUESTED
+	DOCUMENTS
+	DOCUMENTS REQUESTED
+	OBJECTS
+	OBJECTS REQUESTED
+	LABOR
+	LABOR REQUESTED
+LIABILITES
+	LOANS
+	A/P
+----------------------
+Categories: 
+MONEY
+LABOR 
+INFORMATION
+PHYSICAL (OBJECTS and SPACE)
+DIGITAL SPACE and DIGITAL OBJECTS
+
+In general you can:
+A (have and be owed) 
+L (owe and have paid back) 
+I (recieve and refund) 
+E (spend and be refunded)  
+Q (invest and divest) 
+
+Income/Expense is the connection the the world outside the system (chart of accounts)
+
+Partition the transactions by type
+One chart of accounts (table) for each type don't corget conversion accounts I/E
+One table of transactions for each type 
+
+That means there are 32 basic transactions for each category
+that can be chained
+micah gives document to riley THEN riley owes document to cesar 
+
+Procedure: Move document
+A sends out 
+B recieves
+
+Procedure: 
+
+Each type of account can be ALIEQ and CA and LNL
+
+All accounts have an estimated monitary value
+All labor transactions (tasks) have an estimated time to complete
+All objects have an estimated availability
+All accounts can be linked
+All transactions can be chained into a process
+-----------
+Type: 
+From Account
+To Account
+Value: 
+Group: 
+Procedure: 
+Timestamp: 
+Subject: 
+Message: 
+-----------
+Make transaction groups for efficiency and make it simpler for users
+Transactions and transaction groups can trigger others
+Transactions and groups can be linked 
+------
+Boards/Tables
+-----
+Secrets
+------
+Can encrypt any transaction, group, file, secret, board/table
+-----
+Access can be controlled
+----
+Transaction procedures for steps and groups for links
+----
+PROCEDURE: Turn in Sale With Exemption
+----
+7 types of accounts
+5 types of accounting accounts
+2 types of accrual
+2 order does matter
+140 basic transactions
+Includes weird things like
+Refund/Credit with debt
+Credit liability debit income
+-------
+[DATETIME] [ACCOUNT OWNER A] [VERB] [TO/FROM] [ACCOUNT OWNER B] [VALUE]
+PROCEDURE: Sale
+START
+Riley saves to system invoice
+Riley saves to system 
+Riley sends invoice to Micah
+Riley sends receipt to Micah
+Riley sends PO to Micah
+END
+Micah sends PO to Cesar
+Micah sends invoice to David
+David sends invoice to Shipped
+Cesar sends PO to Archive
+David requests backorder to Riley
+
+Where is the invoice?
+Riley sends invoice to Micah
+Micah sends invoice to David
+David sends invoice to Shipped
+----
+This allows creating a gannt chart when I have estimated times
+------
+I easily collect all required tasks by department to easily create a list of things that need to be done in order of priority
+------ 
+SEARCH AND REPORTS
+--------
+objects are the currancy that moves within space it's the value
+Physical transactions move object from one space to another
+Digital transactions move file from one space to another
+
+Money: Cash pays Cobra $115.00
+Physical: Cobra sends Stock 2 Cobra Sets each worth $200
+Cost of goods is $115 and inventory is $200
+-----
+Table for chart of physical accounts
+Table for chart of physical transactions
+Table for chart of physical items
+-----
+Digital accounts
+Digital transactions
+Digital items
+-----
+Money accounts
+Money transactions 
+-----
+Information accounts
+Information transactions
+Information items
+-----
+Labor accounts
+Labor transactions
+Labor items
+
+nallinvbc@gmail.com
+-------
+MONEY (money)
+LABOR (hours)
+INFORMATION (information control number)
+PHYSICAL (item control number)
+DIGITAL (file hash)
+----
+just show the balance sheet for the user
+---BUILT IN FORMS
+Request Sale Review
+Send Artwork
+---BUILT IN PROCEDURES
+One for each form
+---BUILT IN DIGITAL OBJECT TYPES
+Invoice
+Receipt
+Void Receipt
+Refund Receipt
+Receipt Batch
+PO
+Sales Order
+Quote
+Sales Tax Exemption Form
+W9
+Instruction Sheet
+Official Shop Drawing
+Diagram
+Artwork
+Summa File
+Delivery Receipt
+Bill of Lading
+Letters
+Shipping Label 
+Commerical Invoice
+Other Customs Documents
+Spec Sheets
+Warentyees 
+Return Form
+Safety Data Sheets
+Employee Handbook
+Emploee Contract
+Operator Manuals
+Custom
+Other
+---BUILT IN ENTITIES
+User 
+Employee
+Group
+Department
+Customer
+Vendor
+Web Store
+Consultant
+Support
+Custom
+Other
+---BUILT IN MONEY ACCOUNTS
+690GB 3146166 files Graphics department since 2021
+---
+Collections of information and files are called Forms
+Collections of people are called Departments
+Collections of anything are called Groups 
+Collections of transactions are called Procedures
+Connections between two things are called Links
+---
+DAL.sql Tables, Transactions, Triggers, SQL Views
+DAL.cs DBContext, Models, Procedures (methods), Logic, and Update Tools
+BuildDAL.cs My tool for building a database fast uses csv
+BuildVBUSA.sql Initialization Inserts
+---
+HTML Request Form
+---
+C++ Program to write the script
+CSV to Script
+Could run the script too
+WPF Database Update and Archive Tool
+---
+Warning: Changes made to a database by this tool may not be reversable. Data loss may occur. Corruption may occur. Backup before using.
+---
+Customer Request Status Button
+Customer Request Call Button
+---
+create table information(
+);
+create table digital_object(
+);
+create table form(
+);
+create table form_information(
+);
+create table 
+
+ACCOUNTS
+ACCOUNT ACCOUNTING TYPE (asset, liability, etc.)
+ACCOUNT GENERAL TYPE (money,info,labor,etc.)
+
+INFORMATION
+INFORMATION TYPE (phone number, name, email, etc.)
+
+DIGITAL OBJECT
+DIGITAL OBJECT TYPE (invoice, receipt, etc.)
+
+DigitalObject_Information (invoice,invoice num)
+
+
+
+Filling out a form is like
+insert into information values (information type, 'value')
+isnert into form 
+
+PERSON
+PERSON TYPE (user, employee, customer, vendor)
+---
+
+Form
+FormType
+Form_FormType
+
+Information
+InformationType
+Information_InformationType
+
+Form_Information
+Form_InformationType
+
+--Request to fill out form
+select InformationType from Form_InformationType where form = 'abc'
+--Fill in form
+insert into information values (informationType,'value')
+---Conect the form with the information as a procedure
+select id from information where 
+
+---Display form
+---Create form information
+---Connect the form with the information
+
+Files are:
+	Unique
+	Unaltered
+	Accounted for
+---
+ALIEQ
+CA
+2
+let's focus it on just documents to start
+---
+Everything I own and will own Q
+
+What I own can increase and decrease now A<-I A->E 
+Give it back and get it back A->I A<-E (refund)
+What I own can increase and decrease later AR<-AI  
+
+I can lend and borrow now A->AR A<-L
+I can lend and borrow later AP->AR AR
+----
+ASSETS
+	Cash
+	Accounts Recievable
+	Accrued Income (Earned Income)
+LIABILITY
+	Loans
+	Account Payable
+	Accrued Expense (Unearned Income)
+INCOME
+	Sales
+	Refunds
+EXPENSE
+	Expenses
+	Credits
+
+Molten dufle bag
+Molten ball cart carry bag
+High profile 
+
+TASKS
+PHYSICAL OBJECTS
+DIGITAL OBJECTS
+INFORMATION
+MONEY
+
+TASKS ARE STORED 
+PHYSICAL OBJECTS ARE STORED IN INVENTORY ACCOUNTS
+DIGITAL OJBECTS ARE STORED IN FILE ARCHIVE ACCOUNTS
+INFORMATION IS STORED IN INFO ARCHIVE ACCOUNTS
+MONEY IS STORED IN FINANCIAL ACCOUNTS
+
+ASSETS
+	Financial Assets
+		Money I have CASH
+		Money owed to me A/R
+	Information Assets
+		Information I have DRIVE
+		Information owed to me INFORMATION REQUESTED
+	Digital Assets
+		
+	Physical Assets
+	Labor Assets
+		Labor I have
+		Labor owed to me
+
+************
+BALANCE SHEET
+
+ASSET
+Cash
+Accounts Recievable (from us - billed but not paid)
+Accrued Income (from us - not billed and not paid)
+Prepaid Expense (paid from us but not yet recieved)
+
+LIABILITY
+Loan
+Accounts Payable (to us - billed but not paid)
+Accrued Expense (to us - not billed and not paid)
+Prepaid Income (paid to us but not sent out)
+
+INCOME
+Revenue / Earned Revenue (recieved for providing product/service)
+Unearned Revenue (recieved without providing product/service)
+
+EXPENSE
+Operating Expense
+Non-Operating Expense
+
+EQUITY
+---
+Could consider balancing the equity after every income/expense transaction or just calculating it directly on command. It isn't really needed for the user just making sure things are balanced because what's important for the user on their display is: 
+What I have - Cash
+What I have coming in - Accounts Recievable
+What I have going out - Accounts Payable
+Could also keep a little journal to the side of my transactions for the day in order
+---
+Now just to give them simple names
+---
+Tasks I can complete and tasks completed for me (probably not needed just an example)
+Tasks I need to complete
+Tasks that need to be completed for me
+---
+Only show the user the Assets and Liabilities and handle Income Expense and Equity behind the scenes as a way to account for everything. 
+---
+The company is like a bank and the employees are like the customers
+---
+Lending out the document to an employee is an accounts recievable
+The employee requesting the document is an accounts payable
+---
+Employees don't really exist in this model outside of wages because the asset that stores things is for example their virtual computer harddrive. You wouldn't tell them that though. Maybe you would for their understanding of the model. 
+---
+What is the system? Everything that can be accessed or used by the company. 
+Outside of the system is anything accessing or using those things. 
+---
+Everyone can access, but they can only have one copy at a time
+---
+You can pick if multiple check out is allowed. This is easy to implement either way.
+---
+There are 7 accounts basically which leads to about 98 combinations of transactions. So just make these for each type of asset and then catagorize them into the basic departments. Sales, Admin, Production, Artwork.
+----
+Products need to be sellable/not sellable this will make the product list I send a lot easier. Or just SKU codes \_(*_*)_/
+----
+Should be able to specify sorting by order
+----
+What belongs to me
+What belongs to others
+What is coming in that belongs to me
+What is coming in that belongs to others
+
+ASSET
+	Now
+	Future Income
+	Prepaid Expense
+LIABILITY
+	Now
+	Future Expense
+	Prepaid Income
+INCOME
+	Revenue 
+	Accumulated Contra Liability
+EXPENSE
+	Expense
+	Accumulated Contra Asset
+EQUITY
+	Capital
+	Retained Earnings
+	Future Earnings
+---
+Make Sale
+Refund Sale
+Void Sale
+---
+Create Task/Form/Digital Object/Physical Object
+Give Now
+Give Later
+Take Now
+Take Later
+Borrow
+Lend
+Destroy Task/Form/...
+Request
+---
+Integrate with Stripe, Big Commerce, Ship Rush, and Avalara
+---
+Forms
+Labor
+Digital Objects
+Physical Objects
+Forms
+---
+Money
+Sales
+Bar Codes
+Avalara
+Big Commerce
+Ship Rush
+---
+Digital Objects
+Labor
+Boards
+Secrets
+---
+Land, Physical Objects, Money
+---
+Forms are used to request
+---
+FROM: Riley
+TO: Lai
+PRIORITY: Regular
+
+FORM: Request for Product
+
+REQUIRED INFO: Invoice, Date, Product, Quantity
+REQUIED Attachments: None
+
+RESPONSE: 265485 12/15 PBN4 Red 5
+
+NOTES: 
+---
+Request Number: 12345
+Form: Request For Pre-Proof
+Estimated Burden: 30 min 
+
+From: Riley
+To: Aubree
+Priority: Regular
+
+Required Info: 
+Customer
+Invoice
+Product
+ 
+Required Attachments: Artwork
+---
+Just forms and attachments
+---
+
+department Name
+employee .department Name Email pass
+
+
+
+FORM
+FILES
+
+ACCOUNTS
+TRANSACTIONS + FORMS + PERMISSIONS
+
+*** DAL *** 
+Models.T
+DAL.InsertAsync(T)
+DAL.NonQueryAsync(sql)
+List<T> = DAL.QueryAsync<T>(sql)
+
+***
+Regular Priority Critical Immediate
+Public Confidential Secret Top-Secret
+
+Build Options{
+}
+Models{
+    Department{
+        string name NN UQ
+    }
+    Employee{
+        string name NN
+        string username NN UQ
+        .Department
+    }
+}
+*****************************************************************
+Models
+Documents
+Forms
+Transactions
+*****
+
+enum states { STATE_1, STATE_2, STATE_3, MAX_STATES } current_state;
+enum events { EVENT_1, EVENT_2, MAX_EVENTS } new_event;'
+
+void action_s1_e1 (void);
+void action_s1_e2 (void);
+void action_s2_e1 (void);
+void action_s2_e2 (void);
+void action_s3_e1 (void);
+void action_s3_e2 (void);
+enum events get_new_event (void);
+
+void (*const state_table [MAX_STATES][MAX_EVENTS]) (void) = {
+
+    { action_s1_e1, action_s1_e2 }, /* procedures for state 1 */
+    { action_s2_e1, action_s2_e2 }, /* procedures for state 2 */
+    { action_s3_e1, action_s3_e2 }  /* procedures for state 3 */
+};
+
+void main (void)
+{
+    new_event = get_new_event (); /* get the next event to process */
+
+    if (((new_event >= 0) && (new_event < MAX_EVENTS))
+    && ((current_state >= 0) && (current_state < MAX_STATES))) {
+
+        state_table [current_state][new_event] (); /* call the action procedure */
+
+    } else {
+
+        /* invalid event/state - handle appropriately */
+    }
+}
+
+void action_s1_e1 (void)
+{
+    /* do some processing here */
+
+    current_state = STATE_2; /* set new state, if necessary */
+}
+
+void action_s1_e2 (void) {}  /* other action procedures */
+void action_s2_e1 (void) {}
+void action_s2_e2 (void) {}
+void action_s3_e1 (void) {}
+void action_s3_e2 (void) {}
+
+clark@parrishandsonsconstruction.com>; 
+
+*** ***
+T2L 0L9
+(24) V200W 
+*** ***
+
+Cabinet
+	Drawers 
+		Folders
+			Files
+		
+Sand Court Imports
+
+My Drive
+Shared With Me
+
+create invoice
+create receipt
+create artwork file
+
+process sale(invoice receipt)
+	review invoice()
+	review receipt()
+	review tasks()
+	sign invoice()
+	ship(signed invoice)
+ship(signed invoice)
+	pack()
+process artwork(artwork)
+	proof()
+	print()
+	cut()
+	sew()
+	
+
+labor
+money
+digital
+physical
+
+the memory is SQL 
+
+LD
+LC
+MD
+MC
+FC
+FD
+PD
+PC
+
+The person is the processor, the database is the memory, and the money is the bit. 
+
+Processors
+Registers
+
+*** ****
+Here we go! Now I know about MPS!
+MASTER PRODUCTION SCHEDULE: priority status productionID BOM qty eta description
+MASTER MATERIAL SCHEDULE: priority status sourcingID PO vendor SKU qty eta description
+MASATER LABOR SCHEDULE: priority status laborID Process_SKU BOM? qty assignment eta description
+MASTER SHIPPING SCHEUDLE: priority status shippingID shipping_type packing_slip location BOM qty eta description
+
+Every SKU has a BOM which include instructions and drawings. 
+
+PRODUCT-[attribute1.1 attribute1.2]-[attribute2.1 attribute2.2]-[should consider a CUSTOM/NOTCUSTOM attribute to keep it in the right place of the production schedule]
+generate sku codes
+generate sku reference
+
+[PBN4/ML4/...][RED/ROYAL/...][/K/G/...][/CUSTOM]
+PBN4-NAVY-K-CUSTOM
+
+*** *** 
+Group the forms together, give the forms function buttons
+*** ***
+My Tasks
+Sale
+Estimate
+	New invoice
+	Create invoice from estimate
+	Estimate ship date 
+Invoice
+	New invoice
+	Send for review
+Other Files
+Master Production Schedule
+Master Material Schedule
+Master Labor Schedule
+Master Shipping Schedule
+Bill of Materials
+
+Every subassembly and part can have a BOM
+A BOM contains assebmlies, parts, drawings, and instructions
+
+*** ***
+
+Sell Configuration
+	Recursively determine if subsku is in stock, should ship from stock, should manufacture, should dropship
+
+*** *** 
+
+
+Sales -> Review -> Production -> Picking -> Shipping
+
+*** ***
+
+6106 Public Landing Rd.
+Snow Hill, MD 21863 US
+
+*** ***
+
+Every configuration does not get a sku code. Because a configuration is just a collection of skus which are generated during processing. 
+
+*** *** 
+On Invoice 
+(1) PBN4
+(1)	002 18oz Red Frame
+(2)	003 Kevlar Ropes 42ft
+*** ***
+On approval
+(1) PBN4
+(1)	002 18oz Red Frame
+(2)	003 Kevlar Ropes 42ft
+
+Brent Jacobs 425-241-7470
+brent.jacobs@prismvolleyball.org
+
+*** *** 
+
+4x 31-1/2" 4in 8in 
+
+ABCDE FGHJK LMNPQ RSTUV WXYZ01 23456 789
+
+Z9
+100
+
+SALE -> BOM -> PRODUCTION BOM -> PACKING SLIP
+BOM is a collection of SKUs which may also be collections of SKUs
+
+*** ***
+BOMs can be parent to only other BOMs
+SKUs can be parent to only other SKUs
+*** ***
+INVOICE 
+1245 PBN4
+1231  PBN4 Frame 18oz Royal Blue
+2314   Kevlar Cord
+5645  Badminton Netting
+5412 ML4
+
+BOM 564
+	BOM 565
+	1231  PBN4 Frame 18oz Royal Blue
+	2314   Kevlar Cord
+	5645  Badminton Netting
+BOM 566
+	4512 ML4 Frame 18oz Royal Blue
+	
+*** ***
+Review Schedule
+Demand Schedule
+Materials Schedule
+Production Schedule 
+Shipping Schedule
+
+Riley creates sale as Invoice. 
+Riley clicks "Request Review" button; goes to Review
+Micah reviews and clicks "Send to Demand"
+Algorithm attempts to find materials
+Algorithm sends any new POs to Review
+Micah reviews the POs and clicks "Send to Materials"; automatically sends emails
+Alogrithm attempts to schedule production and shipping
+
+Bill of materials contains:
+	Item SKU codes and qty
+	Internal Document DOC numbers
+	BOM numbers and qty
+	Labor Codes and qty 
+	Instructions
+	Diagrams/Drawings
+
+*** ***
+Estimate
+	id, num, ref num, date, customer, billing, shipping, shipping type
+	send to review, create invoice, print, email
+Invoice
+	id, num, ref num, date, customer, billing, shipping, shipping type
+	send to review, send to demand, print, email, recieve payments, refund, pending, post
+Demand
+	
+8006220842
+487 211 009 997
+102 626 456 2
+
+AB CDE FGH IJK LMN PQR STU VWX YZ0 123 456 789
+
+*** *** 1/18/2024 *** ***
+/// INTEGRATIONS ///
+Big Commerce, Avalara, Ship Rush, Stripe
+
+/// BOARDS ///
+APPROVAL: Approval | Alert
+INCOME: Receipt | Account Recievable | Refund to customer 
+DEMAND: Actual demand | Anticipated demand
+FULFILLMENT: Shipping | Drop shipping | Will-call | Delivery | Job | Return
+PRODUCTION: Inventory | Production schedule | Internal transit schedule | Batch schedule | Supplier schedule
+EXPENSE: Receipt | Accounts Payable | Refund from supplier
+
+/// BOARD FORMS ///
+Review card | Alert card
+Receipt | Invoice, PO, Bill | Receipt
+Bom | Bom
+Packing slip | PO | Packing slip | Packing slip | Return form
+Kanban | Kanban | Kanban | Kanban | Kanban
+Receipt | Invoice, PO, Bill | Receipt
+
+/// FORMS ///
+APPROVAL: Approval form, Alert form
+INCOME: Quote, Receipt(To customer), Bill(To customer), Invoice(To customer), Purchase Order (From customer), Sales Order
+DEMAND: Bom
+FULFILLMENT: Packing slip, Purchase Order (To supplier), Return form
+PRODUCTION: Job order
+EXPENSE: Receipt(From supplier), Bill(From customer), Invoice (From supplier), Purchase Order (To supplier)
+
+*** *** 1/19/2024 *** ***
+/// FIND ///
+Search | Report
+Customers | Vendors | Employees
+
+/// BOARDS ///
+Review: 		Approval | Alert
+Income: 		Tax Exemption | Estimate | Sales Receipt | Sales Order | Invoice | Payment | Check | Refund
+Demand: 		Actual Demand | Anticipated Demand
+Fulfillment: 	Shipping | Drop-Shipping | Will-Call | Delivery | Job Order | Return
+Production: 	Inventory | Production Schedule | Batch Schedule | Internal Transit Schedule | Requisition Schedule | Equipment 
+Expense: 		Receipt | Purchase Order | Bill | Payment | Check | Vehicle | Payroll | Refund
+
+/// MESSAGE ///
+Message | Memo
+
+/// ACCOUNTING ///
+Documents: 		Balance Sheet | Profit and Loss | Chart of Accounts | Ledger | Schedule C
+Assets: 		Deposit/Withdrawal | Receivable | Vehicle | Fixed Asset
+Liabilities: 	Loan | Payable 
+Equity: 		Capital | Retained Earnings | Draw
+
+/// ITEMS ///
+Assembly | Item | Route | Documentation
+
+/// EQUIPMENT AND TOOLS ///
+Assembly | Part
+
+/// FILES ///
+Files
+
+/// PROFILE ///
+My profile | My Passwords | Time-Off Request | Settings 
+
+/// ADMIN ///
+Users | Permissions | Password Manager | Algorithm 
+
+/// INTEGRATIONS ///
+Big Commerce | ShipRush | Avalara | Bema  
+
+Regular | Express | Critical | Immediate
+External | Confidential | Secret | Top Secret
+
+ASSETS Cash, Recievables, Prepaid Expense, Inventory, Equipment, Accrued Revenue, Accumulated Depreciation
+LIABILITIES Loans, Payables, Accrued Expense, Prepaid Income
+INCOME: Sales, Refunds
+EXPENSE: Everything in part II of Schedule C
+EQUITY Capital, Retained Earnings, Draw
+
+Equipment Status: Ready | In Use | Down (Maintainance) | Down (Broken) | Lock-Out Requested |  Locked-Out  | Unlock Requested
+
+*** 1/25/24 ***
+He died in a marching accident and is survived by his penis, Lil' Rascal. 
+
+*** 1/26/24 ***
+INCOME: Estimate, Tax Exemption, Sales Receipt, Sales Order, Invoice
+PAYMENT: Payment, Credit, Refund
+REVIEW: Review, Alert, Direct Message, Memo 
+DEMAND: Actual Demand, Anticipated Demand, Drop-Ship
+FULFILLMENT:
+PRODUCTION:
+SOURCING:
+PAYMENT:  
+EXPENSE: 
+
+*** TOOLS AND PURPOSES***
+You want to frame a house, so I designed you a framing hammer. 
+If you try to bend sheet-metal with it, I can't stop you.  
+
+BOM Level	SKU	SKU Name	BOM #	Bom Name 	Description	QTY 	Price	Amount	Taxable
+1	12545-12345	PBN4	12345-12345	Standard Red	Our best outdoor net	1	250	250	T
+2	12345-54321	4" Net Frame	56435-45244	Red 4" Frame		1			
+
+
+Each SKU that can be customized has at least one BOM number that is used as the configuration number. These BOM numbers can be named as default configurations. When entering a SKU into any form, there is a option that has the default configurations and a "custom" which creates a new BOM that needs to be filled out manually. The "custom" BOM field is triggered when there are changes to a defualt configuration. With Javascript on the clientside. Each item and bom needs a description. There is a default description and a custom description. Description priority: Item -> BOM -> Item Custom. Config names are set on the "item page". BOMs do not know their config names. If there is no BOM the config name is "default". A default configuration must be set manually. 
+
+Level	Item	BOM	Item Name	Config Name	Description	QTY	UOM	Unit Price	Amount	Taxable
+1	12345-12345	12345-123456	PBN4	Red Kevlar	Our best outdoor net. 	1	EA	250	250	T
+2	12345-12345	12345-123456	4" Red Frame	4" Red 18 oz	4" Red 18oz vinyl frame	1	EA			
+2	12345-12345	12345-123456	Ash dowel	Default	Ash dowels	1	PAIR		
+
+Level	Item	BOM	Item Name	Config Name	Description	QTY	UOM	Unit Price	Amount	Taxable
+1	12345-12345	12345-123456	PBN4	Red Kevlar	Our best outdoor net. 	1	EA	250	250	T
+2	12345-12345	12345-123456	    4" Red Frame	4" Red 18 oz	4" Red 18oz vinyl frame	1	EA			
+2	12345-12345	12345-123456	    Ash dowel	Default	Ash dowels	1	PAIR			
+2	12345-12345	12345-123456	    PBN4	Red Kevlar	Our best outdoor net. 	1	EA	250	250	T
+3	12345-12345	12345-123456	        4" Red Frame	4" Red 18 oz	4" Red 18oz vinyl frame	1	EA			
+3	12345-12345	12345-123456	        Ash dowel	Default	Ash dowels	1	PAIR			
+3	12345-12345	12345-123456	        PBN4	Red Kevlar	Our best outdoor net. 	1	EA	250	250	T
+4	12345-12345	12345-123456	            4" Red Frame	4" Red 18 oz	4" Red 18oz vinyl frame	1	EA			
+4	12345-12345	12345-123456	            Ash dowel	Default	Ash dowels	1	PAIR			
+
+Types of items: Item, Credit, Refund, Discount, Tax, Fee, Interest, Upgrade, Adjustment, Payment
+
+Let's add the estimated markup% and profit to the bottom of all estimates, sales orders, sales receipts, and invoices.
+
+There is a direct connection between configuration number and BOM number. But configuration numbers should be used whenever the public can see. Just a security IP thing. 
+
+Level	SKU	Config	SKU Name	Config Name	Description	QTY	UOM	Price	Amount	Taxable
+1	12345-12345	12345-123456	PBN4	Red Kevlar	Our best outdoor net. 	1	EA	250	250	T
+2	12345-12345	12345-123456	    4" Red Frame	4" Red 18 oz	4" Red 18oz vinyl frame	1	EA			
+2	12345-12345		    Ash dowel		Ash dowels	1	PAIR			
+2	12345-12345	12345-123456	    PBN4	Red Kevlar	Our best outdoor net. 	1	EA	250	250	T
+3	12345-12345	12345-123456	        4" Red Frame	4" Red 18 oz	4" Red 18oz vinyl frame	1	EA			
+3	12345-12345		        Ash dowel		Ash dowels	1	PAIR			
+3	12345-12345	12345-123456	        PBN4	Red Kevlar	Our best outdoor net. 	1	EA	250	250	T
+4	12345-12345	12345-123456	            4" Red Frame	4" Red 18 oz	4" Red 18oz vinyl frame	1	EA			
+4	12345-12345		            Ash dowel		Ash dowels	1	PAIR				
+
+Estimate: Quote prices for customer.
+
+Tax exemption form: Prevent charging a customer sales tax. Provide proof of exemption in an audit.
+
+Sales receipt: 
+	Purpose: Record immediate sales. Does not create a billing cycle. 
+	Accounts: Asset-Cash, Income-Sales, Liability-Unpaid Sales Tax, Expense-Sales Taxes Remitted
+
+Sales order: 
+	Purpose: Record a purchase order (products) or job order (labor) sent from a customer.
+	
+Invoice:
+	Purpose: Bill customer for a sales order that has shipped or a job order that has been preformed. 
+	Accounts: Asset-Cash, Income-Sales, Assets-Receivable, Liability-Unpaid Sales Tax, Expense-Sales Tax
+
+Payment:
+	Purpose: Recieve payment from customer for an invoice.  
+	Accounts: Asset-Cash, Assets-Receivable 
+	
+Credit Memo: 
+	Purpose: To reduce the balance of an unpaid invoice, to adjust a customer's statement balance, or for use in a future order. 
+	Accounts: Asset-Recivable, Income-Credits, 
+	
+Refund Memo: 
+	Purpose: To refund payments on invoices and sales receipts that have been paid.
+	Accounts: Asset-Cash, Income-Refunds
+
+Review:
+	Purpose: To get approval on a transaction. 
+
+Alert:
+	Purpose: To alert about an issue that is not handled well by other boards. For example, manufacturing errors, damages, spills, ect.
+	
+Direct Message:
+	Purpose: Reference a document in a message directly. 
+
+Memo: 
+	Purpose: To send a 
+
+Routing Sheet:
+	Purpose: 
+
+Item Code: Anything that could be shipped or used for production. 
+
+Equipment Code: Any machine, tool, or part that is used within the company and is not intended to be shipped. 
+
+Production Code: A process that uses labor and equipment to turn one item code into another. 
+
+Assembly: A colletion of items. 
+
+Item: The smallest component of an assembly that cannot be customized or broken down further. 
+
+Bill of Materials:
+	Purpose: List the materials and steps required for production
+
+Actual Demand: 
+	Purpose:
+
+*** *** 
+Assets
+Cash
+
+To buy something
+Make requisition order. 
+Approve requisition order. 
+Buy on credit. Make purchase order.
+Get billed for purchase order. 
+Pay purchase order. 
+
+Create requisition order
+Approve requisition order
+Make PO or Expense Receipt
+Close requsition
+Pay PO if neccessary
+
+*** 1/30/2024 ***
+
+*** CARD ***
+Title Description Amount DueDate DueTime Duration Freq DebitAccount CreditAccount Priority Category Board Status Num Link
+
+Sort: Priority, Category, Due, Num(Dec)
+
+*** BOARDS ***
+filters: Priority Category Board Status D-1,714,30,60,90,365 Link Recurring
+Income Receipt: CRUD
+Expense Receipt: CRUD
+Bill: CRUD
+Requisition Order: CRUD
+Production Order: CRUD
+
+At the top is a button for Create Link Archive Delete And Function_Dropdown
+At the end of each card is NewLink ViewLink Update
+
+*** ACCOUNTING ***
+Balance Sheet
+Income Statement
+Close Books
+General Ledger
+
+*** ACCOUNTS ***
+
+ASSETS
+Cash
+Savings
+Guilt-Free
+
+LIABILITES
+Loans
+Payable
+Payable: Cash 
+Payable: Savings
+Payable: Guilt-Free
+
+INCOME
+Employment
+
+EXPENSE
+Approved Requsitions
+Approved Production Orders
+One of the ten categories
+
+EQUITY
+Retained Earings
+Paid-In
+
+
+
+
+
+	
+
+	
