@@ -1134,6 +1134,67 @@ EQUITY
 Retained Earings
 Paid-In
 
+*** *** *** 
+*** CARD ***
+Title Description Amount DueDate DueTime Duration Freq DebitAccount CreditAccount Priority Category Board Status Num Link
+
+Sort: Priority, Category, Due, Link(Asc), Num(Dec)
+
+*** BOARDS ***
+filters: Priority Category Board Status D-1,714,30,60,90,365 Link Recurring
+Income Receipt: CRUD
+Expense Receipt: CRUD
+Bill: CRUD
+Requisition Order: CRUD
+Production Order: CRUD
+
+At the top is a button for Create Link Archive Delete And Transaction Buttons
+At the end of each card is NewLink ViewLink Update
+
+*** ACCOUNTING ***
+Transactions: CRUD Num Title Description Date DebitAccount CreditAccount AmountRange has filters at the top
+Balance Sheet:
+Income Statement:
+Close Books:
+
+*** ACCOUNTS ***
+ASSETS
+Cash
+Savings
+Guilt-Free
+
+LIABILITES
+Loan
+Payable
+
+INCOME
+Actual Income
+
+EXPENSE
+Actual Expense
+
+EQUITY
+Retained Earings
+Paid-In
+
+*** *** ***
+REVIEW: Review
+ORDER: Order
+INCOME: Receipt
+EXPENSE: Receipt | Bill | Payment
+PRODUCTION: Production_Order | Production_Code
+REQUISITION: Requisition_Order | Item_Code 
+
+Transactions:
+Balance Sheet:
+Income Statement:
+
+PEOPLE: Employers | Vendors | Members
+
+ORDER
+PRIORITY STATUS CATEGORY NUM DUE_DATE DUE_TIME DURATION FREQ DATE_CREATED CREATED_BY
+
+LEVEL SKU TYPE SKU_NAME EQ DESCRIPTION UOM QTY COST	TOTAL	
 
 
 
