@@ -1196,7 +1196,61 @@ PRIORITY STATUS CATEGORY NUM DUE_DATE DUE_TIME DURATION FREQ DATE_CREATED CREATE
 
 LEVEL SKU TYPE SKU_NAME EQ DESCRIPTION UOM QTY COST	TOTAL	
 
+*** 2/1/24 ***
+SCHEDULE: Master To-Do List | Master Shopping List |  Master Payment List
+ORDER: Order 
+REVIEW: Review
+INCOME: Payslip
+EXPENSE: Receipt | Bill | Payment
+PRODUCTION:  To-Do List | Production Code
+REQUISITION: Shopping List | Item Code
 
+PEOPLE: Memebers | Employers | Vendors
+ACCOUNTING: Balance Sheet | Income Statement | General Ledger
+REPORTS: Report
+
+*** *** 
+
+Priorities: Regular High Critical Essential Immediate
+Categories: Income Meal Home Transportation Health Experience Relationship Education Career 
+Status: Review Approved Skipped Completed Archived  
+
+*** TABLES ***
+
+priority: Priority_name : text
+category: Category_name : text
+status: Status_name : text
+
+member: Member_name password : text text
+employer: Employer_name : text
+vendor: Vendor_name : text 
+
+uom: uom_name : text
+code_type: Name : text
+code: *code_type Code Name description? *uom *vendor? cost? : int text text text int  
+
+to_do_list: *member Num to_do_list_date title? : int serial date
+to_do_list_line: *to_do_list line level seq *code: int int int int int
+
+shopping_list: *member Num shopping_list_date title? : int serial date
+shopping_list_line: *to_do_list line level seq *code qty: int int int int int int
+
+code__to_do_list: *Code *to_do_list : int int 
+code__shopping_list: *Code *shopping_list : int int
+
+order: Num *priority *category *status *member creation_date duedate? duetime? title? : serial int int int int date date time text
+order_line: *order line level seq *code qty : int int int int int int
+
+bill: Num *vendor bill_name duedate freq : serial int text date int 
+payment: Num *bill amount : serial int decimal 
+
+payslip: Num *employer amount date freq decription?: serial int decimal date int
+expense_receipt: Num *vendor amount date freq description? : serial int decimal date int text
+
+account: name : text 
+transaction: Num date *account1(account) *account2(account) amount description?: serial date int int 
+
+*** ***
 
 
 	
